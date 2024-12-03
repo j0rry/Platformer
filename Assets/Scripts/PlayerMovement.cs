@@ -81,15 +81,6 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(horizontalInput * dashForce * 10f, 0), ForceMode2D.Impulse);
         }
 
-        if (horizontalInput < 0 && playerState == PlayerState.Normal)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        else if (horizontalInput > 0 && playerState == PlayerState.Normal)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.AddForce(new Vector2(0, jumpForce * 10), ForceMode2D.Impulse);

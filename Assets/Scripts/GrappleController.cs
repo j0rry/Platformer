@@ -42,8 +42,9 @@ public class GrappleController : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 playerMovement.playerState = PlayerMovement.PlayerState.Grappling;
-                float step = 10f * Time.deltaTime;
-                transform.position = Vector2.Lerp(transform.position, closestCollider.transform.position, step);
+                float step = 100f * Time.deltaTime;
+                Vector2 targetPosition = Vector2.Lerp(transform.position, closestCollider.transform.position, step);
+                rb.MovePosition(targetPosition);
                 rb.gravityScale = 0;
 
                 lineRenderer.SetPosition(0, transform.position);
